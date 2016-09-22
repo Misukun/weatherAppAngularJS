@@ -1,0 +1,79 @@
+<div class="container-fluid">
+	<div class="row relative">
+		<div class="col-sm-12 row wrapper-select-city" ng-show="seVe">
+			<div class="col-sm-6 selector">
+				<div class="container-city-select">
+					<div class="content-city-select">
+						<div class="select-country">
+							<h2>Paso dos:</h2>
+							<div class="steps">
+								<span class="icon-step-two">&nbsp;</span>
+								<p>Selecciona un pais:</p>
+								<select class="form-control btn-primary" ng-model="selectionCountry" ng-change="update(selectionCountry)">
+									<option ng-repeat="pais in paises" value="{{pais.city}}">{{pais.name}}</option>
+								</select>
+								
+							</div>
+						</div>
+						<div class="select-city" ng-hide="noSeVe1">
+							<h2>Paso tres:</h2>
+							<div class="steps">
+								<span class="icon-step-three">&nbsp;</span>
+								<p>¿Cual es tu animal preferido de la lista?:</p>
+								<select class="form-control btn-primary" ng-model="selectionAnimal" ng-change="finalUpdate(selectionAnimal)">
+									<option ng-repeat="animal in animales" value="{{animal.english}}">{{animal.spanish}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 displayer">
+				<div class="container-results">
+					<div class="content-result">
+						<div class="message-default">
+							<h2>Sus selecciones se irán mostrando aquí dinamicamente.</h2>
+						</div>
+						<div class="selected-country" ng-hide="noSeVe2"de>
+							<p>Su selección referente al país es:</p>
+							<h2>{{ciudadSelec}}</h2>
+						</div>
+						<div class="selected-animal" ng-hide="noSeVe3">
+							<p>Los animales que más le gustan de la lista son:</p>
+							<h2>{{animalSelec}}</h2>
+						</div>
+						<button class="btn btn-danger" ng-click="resultadoFinal()" ng-hide="noSeVe4">Hacer consulta</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 final-result" ng-hide="noSeVe5">
+			<div class="container-final-result">
+				<div class="content-final-result">
+					<div class="row">
+						<div class="col-sm-6 data-final-result">
+							<div class="container-metadata">
+								<h1 class="city">{{ciudadSelec}}</h1>
+								<h1 class="date">{{finalCurrentDay}}</h1>
+								<h1 class="time">{{finalCurrentTime}}</h1>
+							</div>
+							<div class="container-weather">
+								<img class="icon-weather" ng-src="http://openweathermap.org/img/w/{{iconWeather}}.png" src="http://openweathermap.org/img/w/{{iconWeather}}.png" alt="icono weather">
+								<h2 class="tiempo">{{tiempo}}</h2>
+								<h2 class="temperatura">temperatura: {{temperatura}}ºC</h2>
+								<h2 class="humedad">humedad: {{humedad}}%</h2>
+								<h2 class="presion">Presión: {{presion}} bars</h2>
+							</div>
+						</div>
+						<div class="col-sm-6 img-final-result">
+							<div class="content-img-final-result" style="background-image: url('https://farm{{ urlAnimal.farm }}.staticflickr.com/{{ urlAnimal.server }}/{{ urlAnimal.id }}_{{ urlAnimal.secret }}.jpg')"></div>
+						</div>
+						<div class="col-sm-12 button-back">
+							<button class="btn btn-primary" ui-sref="start">Hacer otra consulta</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
